@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>w_addToFavorites</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Add to favorites</shortDescription>
+        <value>Add to favorites</value>
+    </labels>
+    <labels>
+        <fullName>w_cityNotFound</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>City Not Found</shortDescription>
+        <value>City Not Found</value>
+    </labels>
+    <labels>
+        <fullName>w_cityOnMap</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>City on map</shortDescription>
+        <value>City on map</value>
+    </labels>
+    <labels>
+        <fullName>w_clouds</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Clouds</shortDescription>
+        <value>clouds</value>
+    </labels>
+    <labels>
+        <fullName>w_favoriteCities</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Favorite Cities</shortDescription>
+        <value>Favorite Cities</value>
+    </labels>
+    <labels>
+        <fullName>w_favoriteCitiesWeather</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Your favorite cities weather</shortDescription>
+        <value>Your favorite cities weather</value>
+    </labels>
+    <labels>
+        <fullName>w_feelsLike</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Feels like</shortDescription>
+        <value>Feels like</value>
+    </labels>
+    <labels>
+        <fullName>w_findButtonText</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Search form Find button alternative text</shortDescription>
+        <value>Find</value>
+    </labels>
+    <labels>
+        <fullName>w_hpa</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>hPa</shortDescription>
+        <value>hPa</value>
+    </labels>
+    <labels>
+        <fullName>w_humidity</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Humidity</shortDescription>
+        <value>humidity</value>
+    </labels>
+    <labels>
+        <fullName>w_internalServerError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Internal Server Error</shortDescription>
+        <value>Internal Server Error</value>
+    </labels>
+    <labels>
+        <fullName>w_lastMeasurement</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Last measurement</shortDescription>
+        <value>Last measurement</value>
+    </labels>
+    <labels>
+        <fullName>w_listEmpty</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>List is empty...</shortDescription>
+        <value>List is empty...</value>
+    </labels>
+    <labels>
+        <fullName>w_metersPerSecond</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>m/s</shortDescription>
+        <value>m/s</value>
+    </labels>
+    <labels>
+        <fullName>w_mmHg</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>mm Hg</shortDescription>
+        <value>mm Hg</value>
+    </labels>
+    <labels>
+        <fullName>w_nearestCities</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Nearest cities</shortDescription>
+        <value>Nearest cities</value>
+    </labels>
+    <labels>
+        <fullName>w_noFavorites</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>You have no favorite cities :(</shortDescription>
+        <value>You have no favorite cities :(</value>
+    </labels>
+    <labels>
+        <fullName>w_pressure</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Pressure</shortDescription>
+        <value>pressure</value>
+    </labels>
+    <labels>
+        <fullName>w_removeFromFavorites</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Remove from favorites</shortDescription>
+        <value>Remove from favorites</value>
+    </labels>
+    <labels>
+        <fullName>w_searchInputPlaceholder</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Search input placeholder</shortDescription>
+        <value>Enter your city here...</value>
+    </labels>
+    <labels>
+        <fullName>w_sun</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Sun info</shortDescription>
+        <value>sun</value>
+    </labels>
+    <labels>
+        <fullName>w_sunrise</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Sunrise</shortDescription>
+        <value>sunrise</value>
+    </labels>
+    <labels>
+        <fullName>w_sunset</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Sunset</shortDescription>
+        <value>sunset</value>
+    </labels>
+    <labels>
+        <fullName>w_timeNow</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Time now</shortDescription>
+        <value>Now</value>
+    </labels>
+    <labels>
+        <fullName>w_viewAllButtonText</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>View All</shortDescription>
+        <value>View All</value>
+    </labels>
+    <labels>
+        <fullName>w_weather</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Weather</shortDescription>
+        <value>weather</value>
+    </labels>
+    <labels>
+        <fullName>w_weatherForecast</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>City weather 5 day / 3 hour forecast</shortDescription>
+        <value>weather 5 day / 3 hour forecast</value>
+    </labels>
+    <labels>
+        <fullName>w_weatherIn</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Weather in (city.name)</shortDescription>
+        <value>Weather in</value>
+    </labels>
+    <labels>
+        <fullName>w_weatherInTheWorld</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Weather in the World</shortDescription>
+        <value>Weather in the World</value>
+    </labels>
+    <labels>
+        <fullName>w_wind</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Wind</shortDescription>
+        <value>wind</value>
+    </labels>
+</CustomLabels>

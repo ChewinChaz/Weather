@@ -1,0 +1,6 @@
+<apex:page standardStylesheets="false" lightningStylesheets="true">
+	<apex:includeScript value="{!URLFOR($Resource.assets, 'main.js')}" />
+	<apex:includeLightning />
+	<div id="lightningWeather" />
+	<script>$Weather.Visualforce.initComponent('c:weatherVfApp', 'c:weather', 'lightningWeather');</script>
+</apex:page>

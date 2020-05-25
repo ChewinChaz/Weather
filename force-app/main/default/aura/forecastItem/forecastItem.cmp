@@ -1,0 +1,28 @@
+<aura:component>
+	<aura:attribute name="item" type="Object" required="true" />
+	<aura:attribute name="city" type="Object" required="true" />
+
+	<aura:attribute name="temperature" type="String" />
+
+	<aura:attribute name="now" type="String" />
+
+	<aura:attribute name="cardDecoration" type="String" />
+	<aura:attribute name="cardIcon" type="String" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+	<div>
+		<div class="{!'city-forecast-item-inner ' + v.cardDecoration}">
+			<div class="forecast-item-timestamp">{!v.now}</div>
+			<div class="forecast-item-main">
+				<div class="forecast-item-temperature">
+					{!v.temperature} °C
+				</div>
+				<div class="forecast-item-weather">
+					<img src="{!$Resource.assets + v.cardIcon}" 
+						title="{!v.item.weather[0].main + ' (' + v.item.weather[0].description + ')'}" />
+				</div>
+			</div>
+		</div>
+	</div>
+</aura:component>	

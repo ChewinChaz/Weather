@@ -1,0 +1,62 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="WeatherController">
+	<!-- Attributes -->
+	<aura:attribute name="pages" type="List" default="[
+		{ label: 'Home', value: 'home' },
+		{ label: 'Favorite Cities', value: 'favorites' },
+		{ label: null, value: 'weather' }
+	]" />
+	<aura:attribute name="page" type="String" default="home" />
+	<aura:attribute name="query" type="String" />
+	<aura:attribute name="weather" type="Object" />
+	<aura:attribute name="favoriteCities" type="List" default="[]" />
+	<aura:attribute name="initialized" type="Boolean" default="false" />
+
+	<!-- Script -->
+	<ltng:require scripts="{!$Resource.assets + '/main.js'}"/>
+	
+	<!-- Events -->
+	<aura:registerEvent name="queryParameterChanged" type="c:queryParameterChanged" />
+
+	<!-- Handlers -->
+	<aura:handler name="init" value="{!this}" action="{!c.init}" />
+	<aura:handler event="c:pageChanged" action="{!c.handlePageChanged}" />
+	<aura:handler event="c:queryParameterChanged" action="{!c.handleQueryParameterChanged}" />
+	<aura:handler event="c:favoritesUpdated" action="{!c.handleFavoritesUpdated}" />
+
+	<!-- Component markup and logic -->
+	<lightning:layout multipleRows="true" class="wrapper">
+		<lightning:layoutItem size="12">
+			<c:header query="{!v.query}" page="{!v.page}" pages="{!v.pages}" />
+		</lightning:layoutItem>
+		<lightning:layoutItem size="12">
+			<lightning:layout class="container">
+				<lightning:layoutItem size="9">
+
+					<aura:if isTrue="{!v.page == 'home'}">
+						<c:cityWeatherList title="{!$Label.c.w_weatherInTheWorld}" 
+							weather="{!v.weather}" favoriteCities="{!v.favoriteCities}" />
+					</aura:if>
+
+					<aura:if isTrue="{!v.page == 'favorites'}">
+						<c:cityWeatherList title="{!$Label.c.w_favoriteCitiesWeather}" 
+							weather="{!v.weather}" favoriteCities="{!v.favoriteCities}" />
+					</aura:if>
+
+					<aura:if isTrue="{!v.page == 'weather'}">
+						<c:cityWeatherDetails query="{!v.query}" favoriteCities="{!v.favoriteCities}" />
+					</aura:if>
+
+				</lightning:layoutItem>
+				<lightning:layoutItem class="sidebar" size="3">
+					<div class="sidebar-inner">
+						<c:favoriteCitiesList favoriteCities="{!v.favoriteCities}" />
+					</div>
+				</lightning:layoutItem>
+			</lightning:layout>
+		</lightning:layoutItem>
+	</lightning:layout>
+
+	<aura:if isTrue="{! !v.initialized}">
+		<lightning:spinner alternativeText="Loading" size="large" />
+	</aura:if> 
+</aura:component>	

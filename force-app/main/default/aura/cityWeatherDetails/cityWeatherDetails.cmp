@@ -1,0 +1,67 @@
+<aura:component controller="WeatherController">
+	<aura:attribute name="query" type="String" />
+	<aura:attribute name="favoriteCities" type="List" required="true" />
+
+	<aura:attribute name="cityNotFound" type="Boolean" default="false" />
+	<aura:attribute name="initialized" type="Boolean" default="false" />
+	
+	<aura:attribute name="city" type="Object" />
+	<aura:attribute name="weather" type="Object" />
+	<aura:attribute name="forecast" type="List" />
+	<aura:attribute name="nearestCities" type="List" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.init}" />
+	<aura:handler event="c:queryParameterChanged" action="{!c.init}" />
+
+	<div>
+		<aura:if isTrue="{!v.cityNotFound}">
+
+			<div class="page-header">{!$Label.c.w_cityNotFound}</div>
+			<img src="{!$Resource.assets + '/404.png'}" class="error-image" />
+
+			<aura:set attribute="else">
+				<aura:if isTrue="{!v.forecast != null &amp;&amp; v.city != null &amp;&amp; v.weather != null}">
+					<div class="page-header">
+						{!$Label.c.w_weatherIn + ' ' + (v.city.name ? v.city.name + ', ' + v.city.country : v.query)}
+					</div>
+					<c:cityWeatherCard city="{!v.weather}" favoriteCities="{!v.favoriteCities}" detailed="true" />
+					
+					<aura:if isTrue="{!v.nearestCities.length > 0}">
+						<div class="page-header">{!$Label.c.w_nearestCities}</div>
+						<div class="nearest-cities-list">
+							<aura:iteration items="{!v.nearestCities}" var="city">
+								<lightning:button label="{!city.name}" name="{!city.name}" 
+									onclick="{!c.clickNearestCity}" variant="base" />
+							</aura:iteration>
+						</div>
+					</aura:if>
+
+					<aura:if isTrue="{!v.forecast.length > 0}">
+						<div class="page-header">{!v.city.name + ' ' + $Label.c.w_weatherForecast}</div>
+						<div class="city-forecast">
+							<aura:iteration items="{!v.forecast}" var="forecastItem">
+								<div class="city-forecast-item">
+									<c:forecastItem item="{!forecastItem}" city="{!v.city}" />
+								</div>
+							</aura:iteration>
+						</div>
+					</aura:if>
+
+					<div class="page-header">{!$Label.c.w_cityOnMap}</div>
+					<c:map location="{!v.city.name + ', ' + v.city.country}" />
+
+					<aura:set attribute="else">
+						<aura:if isTrue="{!v.initialized}">
+							<div class="page-header">{!$Label.c.w_internalServerError}</div>
+							<img src="{!$Resource.assets + '/500.png'}" class="error-image" />
+
+							<aura:set attribute="else">
+								<lightning:spinner alternativeText="Loading" size="large" />
+							</aura:set>	
+						</aura:if>
+					</aura:set>
+				</aura:if>
+			</aura:set>
+		</aura:if>
+	</div>
+</aura:component>	

@@ -1,0 +1,21 @@
+<aura:component>
+	<aura:attribute name="title" type="String" required="true" />
+	<aura:attribute name="weather" type="Object" required="true" />
+	<aura:attribute name="favoriteCities" type="List" required="true" />
+
+	<div>
+		<div class="page-header">{!v.title}</div>
+		
+		<aura:if isTrue="{!v.weather != null}">
+			<div class="slds-grid slds-wrap">
+				<aura:iteration items="{!v.weather.list}" var="city">
+					<div class="slds-col slds-size_1-of-2">
+						<c:cityWeatherCard city="{!city}" favoriteCities="{!v.favoriteCities}"  />
+					</div>
+				</aura:iteration>
+			</div>
+
+			<aura:set attribute="else">{!$Label.c.w_listEmpty}</aura:set>
+		</aura:if>
+	</div>
+</aura:component>	

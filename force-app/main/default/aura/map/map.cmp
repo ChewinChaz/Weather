@@ -1,0 +1,11 @@
+<aura:component>
+	<aura:attribute name="location" type="String" required="true" />
+
+	<div>
+		<div class="map-wrapper">
+			<iframe class="map-frame" 
+				src="{!'https://maps.google.com/maps?hl=en&amp;q=' + v.location + '&amp;ie=UTF8&amp;t=&amp;z=10&amp;iwloc=B&amp;output=embed'}">
+			</iframe>
+		</div>
+	</div>
+</aura:component>	

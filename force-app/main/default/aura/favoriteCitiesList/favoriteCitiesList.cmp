@@ -1,0 +1,24 @@
+<aura:component controller="WeatherController">
+	<aura:attribute name="favoriteCities" type="List" required="true" />
+
+	<aura:handler event="c:pageChanged" action="{!c.handlePageChanged}" />
+	<aura:handler event="c:queryParameterChanged" action="{!c.handleQueryParameterChanged}" />
+
+	<div>
+		<lightning:verticalNavigation aura:id="navigation" onselect="{!c.selectedNavItem}">
+			<lightning:verticalNavigationSection label="{!$Label.c.w_favoriteCities}">
+				<aura:if isTrue="{!v.favoriteCities.length != 0}">
+					<aura:iteration items="{!v.favoriteCities}" var="city">
+						<lightning:verticalNavigationItem label="{!city.Name}" name="{!city.Name}" />
+					</aura:iteration>
+					<lightning:verticalNavigationItemIcon label="{!$Label.c.w_viewAllButtonText}" name="favorites" 
+						iconName="utility:open_folder" />
+				
+					<aura:set attribute="else">
+						<div class="no-fav-cities-message">{!$Label.c.w_noFavorites}</div>
+					</aura:set>
+				</aura:if>
+			</lightning:verticalNavigationSection>
+		</lightning:verticalNavigation>
+	</div>
+</aura:component>	

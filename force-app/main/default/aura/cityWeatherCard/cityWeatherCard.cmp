@@ -1,0 +1,110 @@
+<aura:component controller="WeatherController">
+	<!-- external attributes -->
+	<aura:attribute name="city" type="Object" required="true" />
+	<aura:attribute name="favoriteCities" type="List" required="true" />
+	<aura:attribute name="detailed" type="Boolean" default="false" />
+
+	<!-- computed (internal) attributes -->
+	<aura:attribute name="cityFullname" type="String" />
+
+	<aura:attribute name="now" type="String" />
+	<aura:attribute name="lastMeasurement" type="String" />
+	<aura:attribute name="sunriseTime" type="String" />
+	<aura:attribute name="sunsetTime" type="String" />
+
+	<aura:attribute name="nowTime" type="String" />
+
+	<aura:attribute name="cardDecoration" type="String" />
+	<aura:attribute name="weatherIcon" type="String" />
+
+	<aura:attribute name="temperature" type="String" />
+	<aura:attribute name="feelsLike" type="String" />
+
+	<aura:attribute name="windDirection" type="String" />
+
+	<aura:attribute name="inFavorites" type="Boolean" default="false" />
+
+	<!-- handlers -->
+	<aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+	<!-- markup -->
+	<div>
+		<div class="{!'city-card ' + v.cardDecoration}">
+			<!-- card header -->
+			<div>
+				<div class="slds-grid">
+					<div class="slds-col">
+						<aura:if isTrue="{!v.detailed}">
+							<div class="city-card-title">{!v.cityFullname}</div>
+
+							<aura:set attribute="else">
+								<lightning:button label="{!v.cityFullname}" variant="base"
+									class="city-card-title" onclick="{!c.clickCityTitle}" />
+							</aura:set>
+						</aura:if>
+					</div>
+					<div class="slds-col slds-text-align_right">
+						<lightning:buttonIcon iconName="utility:favorite" variant="bare" size="large"
+							class="{!v.inFavorites ? 'favorite-button-checked' : 'favorite-button'}" 
+							onclick="{! c.clickFavoriteButton }"
+							alternativeText="{!v.inFavorites ? $Label.c.w_removeFromFavorites : $Label.c.w_addToFavorites}" />
+					</div>
+				</div>
+				<aura:if isTrue="{! !v.detailed }">
+					<div>
+						{!$Label.c.w_pressure}: {!v.city.main.pressure + ' ' + $Label.c.w_hpa}, 
+						{!$Label.c.w_wind}: {!v.windDirection + ' ' + v.city.wind.speed + ' ' + $Label.c.w_metersPerSecond}, 
+						{!$Label.c.w_humidity}: {!v.city.main.humidity}%
+					</div>
+				</aura:if>
+			</div>
+			<!-- card body -->
+			<div>
+				<div class="slds-grid city-card-body slds-text-align_center">
+					<div class="{!'slds-col slds-size_1-of-' + (v.detailed ? 4 : 2)}">
+						<!-- temperature -->
+						<div class="city-card-col-main">
+							{!v.temperature} °C
+						</div>
+						<div>{!v.city.main.temp_min} °C – {!v.city.main.temp_max} °C</div>
+						<div>{!$Label.c.w_feelsLike}: {!v.feelsLike} °C</div>
+					</div>
+					<div class="{!'slds-col slds-size_1-of-' + (v.detailed ? 4 : 2)}">
+						<!-- weather -->
+						<img src="{!$Resource.assets + v.weatherIcon}" class="city-card-weather-icon" />
+						<div>{!v.city.weather[0].main}</div><div>{!v.city.weather[0].description}</div>
+					</div>
+					<aura:if isTrue="{!v.detailed}">
+						<div class="slds-col slds-size_1-of-4">
+							<!-- time & sun -->
+							<div class="city-card-col-main">
+								{!v.nowTime}
+							</div>
+							<div>{!$Label.c.w_sunrise}:  {!v.sunriseTime}</div>
+							<div>{!$Label.c.w_sunset}: {!v.sunsetTime}</div>
+						</div>
+						<div class="slds-col slds-size_1-of-4">
+							<!-- other info -->
+							<div>{!$Label.c.w_pressure}: {!v.city.main.pressure + ' ' + $Label.c.w_hpa}</div>
+							<div>{!$Label.c.w_wind}: {!v.windDirection + ' ' + v.city.wind.speed + ' ' + $Label.c.w_metersPerSecond}</div>
+							<div>{!$Label.c.w_clouds}: {!v.city.clouds.all}%</div>
+							<div>{!$Label.c.w_humidity}: {!v.city.main.humidity}%</div>
+						</div>
+					</aura:if>
+				</div>
+			</div>
+			<!-- card footer -->
+			<div>
+				<aura:if isTrue="{!v.detailed}">
+					<div>{!$Label.c.w_timeNow}: {!v.now}</div>
+					<div>{!$Label.c.w_lastMeasurement}: {!v.lastMeasurement}</div>
+
+					<aura:set attribute="else">
+						<div>{!$Label.c.w_lastMeasurement}: {!v.lastMeasurement}</div>
+						<div>{!$Label.c.w_timeNow}: {!v.now} ({!$Label.c.w_sun}: ↑ {!v.sunriseTime}, ↓ {!v.sunsetTime})</div>
+					</aura:set>
+				</aura:if>
+			</div>
+		</div>
+	</div>
+</aura:component>

@@ -1,0 +1,22 @@
+<aura:component>
+	<aura:attribute name="query" type="String" required="true" />
+	<aura:attribute name="currentQuery" type="String" />
+	<aura:attribute name="page" type="String" required="true" />
+	<aura:attribute name="pages" type="List" required="true" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+	<div>
+		<div class="header">
+			<div class="container">
+				<img src="{!$Resource.assets + '/logo.png'}" class="logo" onclick="{!c.clickLogo}" />
+				<form class="header-search-form" onsubmit="{!c.submitSearch}">
+					<lightning:input placeholder="{!$Label.c.w_searchInputPlaceholder}" value="{!v.currentQuery}" />
+					<lightning:buttonIcon iconName="utility:search" variant="border-filled" 
+						alternativeText="{!$Label.c.w_findButtonText}" title="{!$Label.c.w_findButtonText}" 
+						onclick="{!c.submitSearch}" />
+				</form>
+			</div>
+		</div>
+	</div>
+</aura:component>
